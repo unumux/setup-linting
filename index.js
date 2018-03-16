@@ -27,7 +27,13 @@ async function createPackageJson() {
 }
 
 async function installEslint() {
-    const packages = ["eslint", "@unumux/eslint-config-unumux", "prettier"];
+    const packages = [
+        "eslint",
+        "@unumux/eslint-config-unumux",
+        "prettier",
+        "babel-eslint",
+        "eslint-plugin-react"
+    ];
 
     try {
         await runCmd(`yarn add --dev ${packages.join(" ")}`);
