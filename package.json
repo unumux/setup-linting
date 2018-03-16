@@ -1,0 +1,22 @@
+{
+  "name": "@unumux/setup-linting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "setup-linting": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@unumux/ux-questions": "^1.1.0"
+  },
+  "devDependencies": {
+    "@unumux/eslint-config-unumux": "^1.1.0",
+    "eslint": "^4.18.2",
+    "prettier": "^1.11.1"
+  }
+}
