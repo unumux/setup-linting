@@ -41,20 +41,23 @@ async function installEslint() {
 async function createEslint() {
     const existingEslintConfig = await checkForEslintConfig();
     let eslint = {};
-    if(existingEslintConfig) {
-        const answer = await questions.yesNo("An eslint config already exists. Would you like to configure it to extend from the unumux eslint configuration?");
-        if(answer) {
-            eslint = existingEslintConfig === "./package.json" ? JSON.parse(fs.readFileSync(existingEslintConfig)).eslintConfig : JSON.parse(fs.readFileSync(existingEslintConfig));
+    if (existingEslintConfig) {
+        const answer = await questions.yesNo(
+            "An eslint config already exists. Would you like to configure it to extend from the unumux eslint configuration?"
+        );
+        if (answer) {
+            eslint =
+                existingEslintConfig === "./package.json"
+                    ? JSON.parse(fs.readFileSync(existingEslintConfig))
+                        .eslintConfig
+                    : JSON.parse(fs.readFileSync(existingEslintConfig));
         }
-    } 
-    const type = await questions.list(
-        "What type of project are you linting?",
-        [
-            { name: "Browser", value: false },
-            { name: "Node", value: "node" },
-            { name: "React", value: "react" }
-        ]
-    );
+    }
+    const type = await questions.list("What type of project are you linting?", [
+        { name: "Browser", value: false },
+        { name: "Node", value: "node" },
+        { name: "React", value: "react" }
+    ]);
     eslint = Object.assign({}, eslint, {
         extends: type.length ? `@unumux/unumux/${type}` : "@unumux/unumux"
     });
@@ -82,7 +85,7 @@ async function checkForEslintConfig() {
 
 function checkForFile(pathName) {
     return new Promise((resolve, reject) => {
-        fs.stat(pathName, (err) => {
+        fs.stat(pathName, err => {
             if (!err) {
                 return resolve(true);
             }
